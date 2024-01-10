@@ -33,8 +33,8 @@ start_sender_or_not.row(InlineKeyboardButton(text="❌", callback_data="sender_s
 
 type_of_push = InlineKeyboardBuilder()
 type_of_push.row(InlineKeyboardButton(text="Мгновенный пуш", callback_data="instant_push"))
-type_of_push.row(InlineKeyboardButton(text="Ежедневный пуш", callback_data="every_day_push"))
-type_of_push.row(InlineKeyboardButton(text="Отложенный пуш", callback_data="time_push"))
+# type_of_push.row(InlineKeyboardButton(text="Ежедневный пуш", callback_data="every_day_push"))
+# type_of_push.row(InlineKeyboardButton(text="Отложенный пуш", callback_data="time_push"))
 
 
 sender_example_urls = InlineKeyboardBuilder()

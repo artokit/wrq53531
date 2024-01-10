@@ -145,18 +145,10 @@ async def get_time_for_push(message: Message, state: FSMContext):
         _, _ = [int(i) for i in m.split(':')]
         data = await state.get_data()
         await state.clear()
-        t = threading.Thread(target=waiting_for_push, args=(message.text, data, message.bot))
-        t.start()
         await message.answer("Ожидаем нужное время для рассылки")
     except Exception as e:
         str(e)
         return await message.answer("Дата введена неправильно\nПосмотри на образец ещё раз")
-
-
-def waiting_for_push():
-    while True:
-        print(1)
-        time.sleep(3)
 
 
 async def start_sender(data: dict, bot: Bot, users_id: list[int]):
@@ -178,6 +170,3 @@ async def start_sender(data: dict, bot: Bot, users_id: list[int]):
                 video = msg.video.file_id
             except Exception as e:
                 print(str(e))
-
-
-threading.Thread(target=waiting_for_push, daemon=True).start()

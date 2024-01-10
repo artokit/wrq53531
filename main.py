@@ -6,6 +6,7 @@ from routers import user, admins
 
 async def main():
     bot = Bot(TOKEN)
+    bot.protect_content = True
     print(await bot.get_me())
     dp = Dispatcher()
     dp.include_routers(user.router, admins.router)

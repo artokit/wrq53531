@@ -66,6 +66,12 @@ async def get_more_comments(call: CallbackQuery, state: FSMContext):
     ids = await send_photos_range(call.bot, call.message.chat.id, last_photo_id+1, last_photo_id+5)
     await state.update_data({'last_photo_id': last_photo_id+5})
     await state.update_data({'comments': ids})
+    await call.message.answer(
+        '😱 Отзывтарды жіберетін болсам бұдан 100 есе көп, ең дұрысы Өзіңіз бастап көз жеткізің бірінші табысыңызды бізбен жасаңыз 🙏🏻😌\n\n'
+        'Маған жаз “Бастайық бірге” деп ⤵️\n\n'
+        f'https://t.me/Toguzbay_Official',
+        protect_content=True
+    )
 
 
 async def send_photos_range(bot, chat_id: int, start_index: int, end_index: int):

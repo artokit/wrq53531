@@ -9,6 +9,7 @@ cursor = connect.cursor()
 
 def add_user(user_id: int, username: str) -> bool:
     try:
+        add_new_sender_id(user_id)
         cursor.execute('INSERT INTO USERS VALUES(?, ?)', (user_id, username))
         connect.commit()
         return True
@@ -50,3 +51,15 @@ def get_users():
 
 def get_senders():
     return cursor.execute("SELECT * FROM SENDERS").fetchall()
+
+
+def add_new_sender_id(user_id: int):
+    con = sqlite3.connect('sender.sqlite')
+    curs = con.cursor()
+    try:
+        curs.execute('INSERT INTO sender_ids VALUES(?)', (user_id,))
+        con.commit()
+    except sqlite3.IntegrityError:
+        pass
+    curs.close()
+    con.close()
